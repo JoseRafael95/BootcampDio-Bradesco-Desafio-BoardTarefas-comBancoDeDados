@@ -1,0 +1,16 @@
+services:
+  db:
+    image: mysql:latest  # ou mysql:8.0, por exemplo
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: senha123  # Senha do root
+      MYSQL_USER: rafael             # Usuário personalizado
+      MYSQL_PASSWORD: senha123       # Senha do usuário
+      MYSQL_DATABASE: meu_banco      # Banco criado automaticamente
+    ports:
+      - "3307:3306"  # Mapeia 3307 (host) → 3306 (container)
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persistência de dados
+
+volumes:
+  mysql_data:  # Volume para armazenar dados do MySQL
